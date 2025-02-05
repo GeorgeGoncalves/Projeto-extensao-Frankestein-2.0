@@ -25,4 +25,8 @@ public class ClienteServico {
 		return obj.orElseThrow(() -> new ObjetoNaoEncontrado(
 				"Objeto não encontrado"));
 	}
+	
+	public Cliente inserir(Cliente obj) {
+		return cRepositorio.save(obj);
+	}
 }
