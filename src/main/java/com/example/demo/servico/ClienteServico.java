@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entidades.Cliente;
 import com.example.demo.repositorio.ClienteRepositorio;
+import com.example.demo.servico.excecao.ObjetoNaoEncontrado;
 
 @Service
 public class ClienteServico {
@@ -21,6 +22,7 @@ public class ClienteServico {
 	
 	public Cliente encontrarPorId(int id) {
 		Optional<Cliente> obj = cRepositorio.findById(id);
-		return obj.orElseThrow();
+		return obj.orElseThrow(() -> new ObjetoNaoEncontrado(
+				"Objeto não encontrado"));
 	}
 }
