@@ -77,6 +77,10 @@ public class Produto_Servico implements Serializable {
 		this.cliente = cliente;
 	}
 
+	public Double getPagamento() {
+		return preco * quantidade;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

@@ -85,6 +85,14 @@ public class Cliente implements Serializable {
 		return produtos;
 	}
 	
+	public Double getPagamentoTotal() {
+		double soma = 0.0;
+		for (Produto_Servico a: produtos) {
+			soma += a.getPagamento();
+		}
+		return soma;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
