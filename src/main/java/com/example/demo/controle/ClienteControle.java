@@ -18,6 +18,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.example.demo.dto.ClienteDTO;
 import com.example.demo.entidades.Cliente;
 import com.example.demo.servico.ClienteServico;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController
 @RequestMapping("/clientes")
@@ -53,5 +55,12 @@ public class ClienteControle {
 	public ResponseEntity<Void> deletar(@PathVariable int id) {
 		cServico.deletar(id);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<Cliente> atualizar(@PathVariable int id,
+			@RequestBody Cliente obj) {
+		obj = cServico.atualizar(id, obj);
+		return ResponseEntity.ok().body(obj);
 	}
 }

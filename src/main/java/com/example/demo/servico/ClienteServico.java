@@ -34,4 +34,17 @@ public class ClienteServico {
 		cRepositorio.findById(id);
 		cRepositorio.deleteById(id);		
 	}
+	
+	public Cliente atualizar(int id, Cliente obj) {
+		Cliente novoObj = cRepositorio.getReferenceById(id);
+		atualizarDado(novoObj, obj);
+		return cRepositorio.save(novoObj);
+	}
+
+	private void atualizarDado(Cliente novoObj, Cliente obj) {
+		novoObj.setNome(obj.getNome());
+		novoObj.setEndereco(obj.getEndereco());
+		novoObj.setTelefone(obj.getTelefone());
+		novoObj.setEmail(obj.getEmail());		
+	}
 }
