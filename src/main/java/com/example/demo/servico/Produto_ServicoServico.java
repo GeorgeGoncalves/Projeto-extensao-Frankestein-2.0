@@ -34,4 +34,16 @@ public class Produto_ServicoServico {
 		psRepositorio.findById(id);
 		psRepositorio.deleteById(id);
 	}
+	
+	public Produto_Servico atualizar(int id, Produto_Servico obj) {
+		Produto_Servico novoObj = psRepositorio.getReferenceById(id);
+		atulizarDado(novoObj, obj);
+		return psRepositorio.save(novoObj);
+	}
+
+	private void atulizarDado(Produto_Servico novoObj, Produto_Servico obj) {
+		novoObj.setNome(obj.getNome());
+		novoObj.setPreco(obj.getPreco());
+		novoObj.setQuantidade(obj.getQuantidade());		
+	}
 }
