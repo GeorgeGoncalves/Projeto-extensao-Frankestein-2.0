@@ -24,5 +24,9 @@ public class Produto_ServicoServico {
 		Optional<Produto_Servico> usuario = psRepositorio.findById(id);
 		return usuario.orElseThrow(()-> new ObjetoNaoEncontrado(
 				"Objeto não encontrado"));
-	}	
+	}
+	
+	public Produto_Servico inserir(Produto_Servico obj) {
+		return psRepositorio.save(obj);
+	}
 }
