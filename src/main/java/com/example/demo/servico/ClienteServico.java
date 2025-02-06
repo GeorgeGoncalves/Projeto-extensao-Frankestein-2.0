@@ -29,4 +29,9 @@ public class ClienteServico {
 	public Cliente inserir(Cliente obj) {
 		return cRepositorio.save(obj);
 	}
+	
+	public void deletar(int id) {
+		cRepositorio.findById(id);
+		cRepositorio.deleteById(id);		
+	}
 }
