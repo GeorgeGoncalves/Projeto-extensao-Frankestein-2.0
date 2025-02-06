@@ -1,6 +1,7 @@
 package com.example.demo.controle;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dto.Produto_ServicoDTO;
 import com.example.demo.entidades.Produto_Servico;
 import com.example.demo.servico.Produto_ServicoServico;
 
@@ -20,8 +22,10 @@ public class Produto_ServicoControle {
 	private Produto_ServicoServico psServico;
 	
 	@GetMapping
-	public ResponseEntity<List<Produto_Servico>> encontrarTodos() {
-		List<Produto_Servico> lista = psServico.encontrarTodos();		
-		return ResponseEntity.ok().body(lista);
+	public ResponseEntity<List<Produto_ServicoDTO>> encontrarTodos() {
+		List<Produto_Servico> lista = psServico.encontrarTodos();
+		List<Produto_ServicoDTO> dto = lista.stream().map(
+				x -> new Produto_ServicoDTO(x)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(dto);
 	}	
 }
