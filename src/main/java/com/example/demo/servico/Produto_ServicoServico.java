@@ -29,4 +29,9 @@ public class Produto_ServicoServico {
 	public Produto_Servico inserir(Produto_Servico obj) {
 		return psRepositorio.save(obj);
 	}
+	
+	public void deletar(int id) {
+		psRepositorio.findById(id);
+		psRepositorio.deleteById(id);
+	}
 }
