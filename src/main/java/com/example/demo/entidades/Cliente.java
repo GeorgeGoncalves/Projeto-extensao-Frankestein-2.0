@@ -1,12 +1,17 @@
 package com.example.demo.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Cliente implements Serializable {
@@ -19,6 +24,10 @@ public class Cliente implements Serializable {
 	private String endereco;
 	private String telefone;
 	private String email;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "cliente")
+	private List<Produto_Servico> produtos = new ArrayList<>();
 	
 	public Cliente() {
 	}
@@ -72,6 +81,10 @@ public class Cliente implements Serializable {
 		this.email = email;
 	}
 
+	public List<Produto_Servico> getProdutos() {
+		return produtos;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
