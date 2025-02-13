@@ -63,6 +63,25 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.properties.hibernate.format_sql=true
 ```
 
+### Tecnologias utilizadas
+- Java
+- Spring Tools Suit(STS)
+- Spring Boot
+- Postman
+
+### Como rodar a aplicação
+
+- Requesito
+  - Java 17
+- Clonar o repositorio  
+  - [Frankestein](https://github.com/GeorgeGoncalves/Projeto-extensao-Frankestein-2.0.git)
+- acessar as pastas
+  - src/main/java
+    - com.example.demo
+- executar Run As
+  - Spring Boot App
+
+
 ### Autor
 
 George Gonçalves Miranda  
